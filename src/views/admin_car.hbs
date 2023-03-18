@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+    <head>
+        <title>SIGNUP</title>
+        <style>
+        table {
+            width: 100%;
+            border: 1px solid #444444;
+            background-color: #ffead8;
+        }
+        td,tr {
+            border: 1px solid #444444;
+            background-color: white;
+        }
+
+    </style>
+    <script>
+    const logout = () => {window.location.href="http://localhost:3000/logout"};
+  </script>
+    </head>
+<html>
+    <body>
+    <div class="navbar">
+      <a class="logo" href="/">
+        <img onClick="window.location.reload()" src="./images/logo.png" height="50px">
+      </a>
+        <div class="userinfo">{{user}}님이 로그인중입니다.
+        <button class="logout" onclick="logout()">Logout</button></div>
+    </div>
+    <h1>차량 입고</h1>
+    
+    <form method="post" name="insertVehcle">
+        <b>sid : {{user}} 관리자</b>
+    <div>
+        <b>Type : </b>
+        <select name="v_type">
+            <option value="car">car</option>
+            <option value="suv">suv</option>
+            <option value="truck">truck</option>
+        </select>
+    </div>
+    <div>
+        <b>Model : </b>
+        <select name="model">
+                        <option value="Betly">Betly</option>
+                        <option value="KIA">KIA</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Tesla">Tesla</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Lexus">Lexus</option>
+                        <option value="Honda">Honda</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Maybach">Maybach</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Porsche">Porsche</option>
+                        <option value="Maserati">Maserati</option>
+        </select>
+    </div> 
+    <div>
+        <b>fuel : </b>
+        <select name="fuel">
+            <option value="휘발유">휘발유</option>
+            <option value="경유">경유</option>
+            <option value="LPG">LPG</option>
+            <option value="CNG">CNG</option>
+        </select> 
+    </div>  
+    <div>
+        <label for="mileage"><b> 주행거리 : </b></label>
+        <input type="text" name="mileage" style="width:50px;" required>
+    </div>
+    <div>
+        <label for="price"><b> 가격 : </b></label>
+        <input type="text" name="price" style="width:50px;" required>만원
+    </div>
+    <div>
+        <label for="year"><b> 연식 : </b></label>
+        <input type="text" name="year" style="width:50px;" required>년도
+    </div>
+    <button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{v_type}}, {{user}}, {{model}}, {{fuel}}, {{mileage}}, {{price}}, {{year}} " 
+                onclick="document.all['target'].style.visibility = 'visible';"
+                formaction="/admin_car"
+                >옵션추가</button>
+                
+    </form>
+    <div id="target">
+        <h3> {{title4}}</h3>
+        <div>
+            <form method="post" name="addop">   
+            <table>
+                <tr>
+                    <td>{{title4_id}}</td>
+                    <td>{{title4_op}}</td>
+                </tr>
+                {{#each ve_op}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td>{{op}}</td>
+                </tr>
+                {{/each}}
+            </table>
+                <h5><label for="op_id"><b>{{title4_opid}}  </b></label></h5>
+                <input type="text" name="op_id" style="width:50px;" >
+                <button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{car_num}} " 
+
+                formaction="/admin_car/addop"
+                > 차량 추가</button>
+         
+            </form>
+        </div>
+        
+    </div>
+    <div>
+
+    <form method="post" name="updateVehcle2">   
+    <h1>차량 수정 </h1>
+    <div>
+        <label for="car_num"><b> 수정하고 싶은 차량 번호 : </b></label>
+        <input type="text" name="car_num" style="width:50px;" >
+    <button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{car_num}} " 
+
+                formaction="/admin_car/update"
+                > 조회</button>
+    </div>
+    
+    <h3>{{title5}}</h3>
+    <table> 
+        <tr>
+            <td>차량식별번호</td>
+            <td>model</td>
+            <td>staus</td>
+            <td>fuel</td>
+            <td>주행거리</td>
+            <td>가격</td>
+            <td>연식</td>
+            <td>판매날짜</td>
+            <td>판매자</td>
+            <td>구매자</td>
+            <td>button</td>
+        </tr>
+        {{#each s_Vehicle}}
+        
+        <form method="post" name="updateVehcle3" >   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{model}}</td>
+            <td>{{staus}}</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td><input type="text" name="new_price" placeholder="{{price}}" style="width:50px;">만원</td>
+            <td>{{year}}</td>
+            <td>{{date}}</td>
+            <td>{{salesperson_sid}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+            style="margin-left: 10px;" 
+            name="upBtn2"
+            type="submit"
+            value="{{new_price}} "
+            formaction="/admin_car/update/up"
+            >수정</td>
+           
+            
+        </tr>
+        </form>
+        {{/each}}
+    </table>
+    </div>
+    </form>
+    <div>
+        <form method="post" name="deleteVehcle">   
+        <h1>차량 삭제 </h1>
+        <div>
+        <label for="car_num"><b> 삭제하고 싶은 차량 번호 : </b></label>
+        <input type="text" name="car_dlt_num" style="width:50px;" >
+        <button 
+                style="margin-left: 10px;" 
+                name="dltBtn"
+                type="submit"
+                value="{{car_dlt_num}} " 
+
+                formaction="/admin_car/delete"
+                > 삭제</button>
+        </div>
+
+    </div>
+    </body>
+</html>

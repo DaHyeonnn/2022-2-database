@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+    <head>
+        <title>SIGNUP</title>
+        <style>
+        table {
+            width: 100%;
+            border: 1px solid #444444;
+            background-color: #ffead8;
+        }
+        td,tr {
+            border: 1px solid #444444;
+            background-color: white;
+        }
+    </style>
+    <script>
+     const logout = () => {window.location.href="http://localhost:3000/logout"};
+      
+    function doOpenCheck(chk){
+        console.log("ok", chk);
+        var obj = document.getElementsByName("users");
+        for(var i=0; i<obj.length; i++){
+            if(obj[i] != chk){
+                obj[i].checked = false;
+            }
+    }
+    }
+
+    </script>
+    </head>
+<html>
+    <body>
+    <div class="navbar">
+      <a class="logo" href="/">
+        <img onClick="window.location.reload()" src="./images/logo.png" height="50px">
+      </a>
+        <div class="userinfo">{{user}}님이 로그인중입니다.
+        <button class="logout" onclick="logout()">Logout</button></div>
+    </div>
+    <h1>차량 예약하기</h1>
+    
+    <form method="post" name="reser_car">
+        <b>sid : {{user}} 관리자</b>
+    <div>
+        <b>Type : </b>
+        <select name="v_type">
+            <option value="car">car</option>
+            <option value="suv">suv</option>
+            <option value="truck">truck</option>
+        </select>
+    </div>
+    <div>
+        <b>fuel : </b>
+        <select name="fuel">
+            <option value="휘발유">휘발유</option>
+            <option value="경유">경유</option>
+            <option value="LPG">LPG</option>
+            <option value="CNG">CNG</option>
+        </select> 
+    </div>  
+    <div>
+        <label><input type="checkbox" name="option" value="1" onclick="doOpenCheck(this);"> 신형자동차</label>
+        <label><input type="checkbox" name="option" value="2" onclick="doOpenCheck(this);"> 중고자동차</label>
+                
+    </div>
+    <div>
+        <label for="price"><b> 가격 : </b></label>
+        <input type="text" name="price_st" style="width:50px;" >~
+        <input type="text" name="price_ed" style="width:50px;" >만원
+    </div>
+    <div>
+        <label for="price"><b> 연식 : </b></label>
+        <input type="text" name="year_st" style="width:50px;" >~
+        <input type="text" name="year_ed" style="width:50px;" >년도 모델
+    </div>
+    <br>
+    <button 
+                style="margin-left: 10px;" 
+                name="car_rs"
+                type="submit"
+                value="{{v_type}}, {{model}}, {{fuel}}, {{option}}, {{price_st}}, {{price_ed}}, {{year_st}}, {{year_ed}}, " 
+
+                formaction="/CarReservation"
+                >조회</button>
+                
+    </form>
+    <h3>{{title}}</h3>
+    <table> 
+        
+        <tr>
+            <td><b>차량식별번호</b></td>
+            <td><b>type</b></td>
+            <td><b>model</b></td>
+            <td><b>status</b></td>
+            <td><b>option</b></td>
+            <td><b>fuel</b></td>
+            <td><b>주행거리</b></td>
+            <td><b>가격</b></td>
+            <td><b>연식</b></td>
+            <td><b>판매날짜</b></td>
+            <td><b>판매자ID</b></td>
+            <td><b>구매자ID</b></td>
+            <td><b>button</b></td>
+        </tr>
+        
+        {{#each oldCar}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}CC</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        {{#each newCar}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}CC</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        {{#each allCar}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}CC</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        {{#each oldSuv}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}인용</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        {{#each newSuv}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}인용</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        {{#each allSuv}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}인용</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        {{#each oldTr}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}톤</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        {{#each newTr}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}톤</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        {{#each allCTr}}
+        <form method="post" name="res_Vehcle">   
+        <tr>
+            <td>{{vin}}</td>
+            <td>{{t_id}}</td>
+            <td>{{model}}</td>
+            <td>{{status}}</td>
+            <td>{{v_option}}톤</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}만원</td>
+            <td>{{year}}년도 모델</td>
+            <td>{{date}}</td>
+            <td>{{salesperson}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/CarReservation/res"
+                > 예약</button></td>
+        </tr>
+        </form>
+        {{/each}}
+        </div>
+        
+    </table>
+    <div class="ad_img">
+            <a href="/cust_home">
+            <img id="ad_img" src="./images/go_cust.png" alt="뒤로가기" style="width:500px; height:300px;"/>
+            </a>
+    </div>
+    

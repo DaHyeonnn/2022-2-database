@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+    <head>
+        <title>SIGNUP</title>
+        <style>
+        table {
+            width: 100%;
+            border: 1px solid #444444;
+            background-color: #ffead8;
+        }
+        td,tr {
+            border: 1px solid #444444;
+            background-color: white;
+        }
+    </style>
+    <script>
+     const logout = () => {window.location.href="http://localhost:3000/logout"};
+     const move = () => {window.location.href="http://localhost:3000"};
+    </script>
+    </head>
+<html>
+    <body>
+    <div class="navbar" formaction="/admin_cust" and "/admin_cust/approve">
+      <a class="logo" href="/">
+        <img onClick="window.location.reload()" src="./images/logo.png" height="50px">
+      </a>
+        <div class="userinfo">{{admin}}님이 로그인중입니다.
+        <button class="logout" onclick="logout()">Logout</button></div>
+    </div>
+  
+    <div formaction="/admin_cust">
+    <h1>구매 예약 조회</h1>
+    <h3>{{title}}</h3>
+    <table> 
+        <tr>
+            <td>status</td>
+            <td>차량식별번호</td>
+            <td>model</td>
+            <td>fuel</td>
+            <td>주행거리</td>
+            <td>가격</td>
+            <td>연식</td>
+            <td>예약날짜</td>
+            <td>판매자</td>
+            <td>구매자</td>
+            <td>button</td>
+        </tr>
+        {{#each slt_reservation}}
+        <form method="post" name="reservation">   
+        <tr>
+            <td>{{status}}</td>
+            <td>{{vin}}</td>
+            <td>{{model}}</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}</td>
+            <td>{{year}}</td>
+            <td>{{date}}</td>
+            <td>{{salesperson_sid}}</td>
+            <td>{{customer_ssn}}</td>
+            <td><div><button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/admin_cust/companion"
+                >반려</div>
+                <div>
+                <button 
+                style="margin-left: 10px;" 
+                name="insBtn"
+                type="submit"
+                value="{{vin}}" 
+                formaction="/admin_cust/approve"
+                >승인</div></td>
+           
+        </tr>
+        </form>
+        {{/each}}
+    </table>
+    </div>
+    
+    <div name="result" formaction="/admin_cust/approve">
+    <h3>예약 승인 및 반려 결과</h3>
+    <table> 
+        <tr>
+            <td>status</td>
+            <td>차량식별번호</td>
+            <td>model</td>
+            <td>fuel</td>
+            <td>주행거리</td>
+            <td>가격</td>
+            <td>연식</td>
+            <td>예약날짜</td>
+            <td>판매자</td>
+            <td>구매자</td>
+        </tr>
+        {{#each slt_reservation_result}}
+        <tr>
+            <td>{{status}}</td>
+            <td>{{vin}}</td>
+            <td>{{model}}</td>
+            <td>{{fuel}}</td>
+            <td>{{mileage}}</td>
+            <td>{{price}}</td>
+            <td>{{year}}</td>
+            <td>{{date}}</td>
+            <td>{{salesperson_sid}}</td>
+            <td>{{customer_ssn}}</td>
+    
+        </tr>
+
+        {{/each}}
+
+    </table>
+    </div>
+  
+    </body>
+</html>

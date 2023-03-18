@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Car_project</title>
+    <meta charset="utf-8" />
+    <link href="./css/style.css" rel="stylesheet" type="text/css"/>
+    <script>
+    const logout = () => {window.location.href="http://localhost:3000/logout"};
+  </script>
+  </head>
+      <div class="navbar">
+      <a class="logo" href="/">
+        <img onClick="window.location.reload()" src="./images/logo.png" height="50px">
+      </a>
+        <div class="userinfo">{{user}}님이 로그인중입니다.
+        <button class="logout" onclick="logout()">Logout</button></div>
+        <div>
+            
+
+        </div>
+    </div>
+    <body>
+    <div>
+      <a href="/admin_home">
+      <img id="ad_img"   src="./images/go_admin.png" alt="관리자 홈페이지 이동" style="width:500px; height:300px;"/>
+      </a>
+    </div>
+    <div>
+      <a href="/cust_home" >
+      <img id="ad_img"  src="./images/go_cust.png" alt="고객 홈페이지 이동"  style="width:500px; height:300px;"/>
+      </a>
+    </div>
+    </body>
+</html>

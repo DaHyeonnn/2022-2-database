@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <script>
+    const logout = () => {window.location.href="http://localhost:3000/logout"};
+
+  </script>
+</head>
+
+  <body>
+    <div class="navbar">
+      <a class="logo" href="/">
+        <img onClick="window.location.reload()" src="./images/logo.png" height="50px">
+      </a>
+        <div class="userinfo">{{user}}님이 로그인중입니다.
+        <button class="logout" onclick="logout()">Logout</button></div>
+        <div>
+            
+
+        </div>
+    </div>
+    <div class="ad_img">
+      <a href="/CarReservation">
+      <img id="ad_img" src="./images/cust_car.png" alt="차량 예약하기" style="width:500px; height:300px;"/>
+      </a>
+    </div>
+    <div class="ad_img">
+      <a href="/my_page">
+      <img id="ad_img" src="./images/cust_rs.png" alt="나의 예약 조회하기" style="width:500px; height:300px;"/>
+      </a>
+    </div>
+
+  
+</body>
+</html>

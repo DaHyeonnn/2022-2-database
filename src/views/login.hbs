@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/login.css">
+    <script>
+        let doOpenCheck = (a) => {
+            console.log("hhhhhhhhhhhhhh");
+        let obj = document.getElementsByName("project-check");
+        for (let i = 0; i < obj.length; i++) {
+            if (obj[i] != a) {
+                obj[i].checked = false;
+                }
+            }
+    }
+    
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="login">
+            <h2>Log-in</h2>
+            <div class="login_sns">
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            </div>
+
+            <form name="login_inf" method="post" action="/login">
+                <label><input type="checkbox" name="option" value="1" onclick="doOpenCheck(this)"> customer</label>
+                <label><input type="checkbox" name="option" value="2" onclick="doOpenCheck(this)"> admin</label>
+                <div class="login_id">
+                    <h4>id</h4>
+                    <input type="text" name="id" placeholder="id">
+                </div>
+                <div class="login_pw">
+                    <h4>Password</h4>
+                    <input type="password" name="password" placeholder="Password">
+                </div>
+                <br>
+                <br>
+                <div class="login_btn">
+                    <button name="login_btn" type="submit"  > Login </button>
+                </div>
+                </form>
+
+                <br>
+                <br>
+                <div class="createID_btn">
+                    <a type="submit" href="/createid">Create your ID ? </button>
+                </div> 
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.outer {
+    height:250px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  .inner {
+    display: inline-block;
+  }
+  
+  
+  

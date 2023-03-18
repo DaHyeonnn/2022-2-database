@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SIGNUP</title>
+        <link rel="stylesheet" href="./css/createid.css">
+        <script>
+        const logout = () => {window.location.href="http://localhost:3000/logout"};
+        </script>
+    </head>
+    <body>
+        <h1 align="center">회원가입 창</h1>
+        <hr>
+        <form name="create_user" method="post" >
+            <div>
+                <b class="name">CustomerID</b><br>
+                <input class="text" type="text" name="UserID" placeholder="아이디" required><br><br>
+            </div>
+            <div>
+                <b class="name">Password</b><br>
+                <input class="text" type="password" name="PW" placeholder="패스워드" required><br><br>
+            </div>
+            <div>
+                <b class="name">name</b><br>
+                <input class="text" type="text" name="u_name" placeholder="이름" required><br><br>
+            </div>
+            <div>
+                <b class="name"> (주소) 군/구 </b><br>
+                <input class="text" type="text" name="address_city" placeholder="시/도" required><br><br>
+            </div>
+            <div>
+                <b class="name"> (주소) 동 </b><br>
+                <input class="text" type="text" name="address_country" placeholder="군/구" required><br><br>
+            </div>
+            <div>
+                <b class="name"> (주소) 도로명 </b><br>
+                <input class="text" type="text" name="address_road" placeholder="도로명" required><br><br>
+            </div>       
+            <div>
+                <button name="crebtn" class="sign_up" type="submit" formaction="/createid">Sign up</button>
+            </div>
+        </form>
+    </body>
+</html>

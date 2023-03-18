@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <script>
+    const logout = () => {window.location.href="http://localhost:3000/logout"};
+    const move = () => {window.location.href="http://localhost:3000/sugang"};
+  </script>
+</head>
+
+  <body>
+    <div class="navbar">
+      <a class="logo" href="/">
+        <img onClick="window.location.reload()" src="./images/logo.png" height="50px">
+      </a>
+        <div class="userinfo">{{user}}님이 로그인중입니다.
+        <button class="logout" onclick="logout()">Logout</button></div>
+    </div>
+    <div class="ad_img">
+      <a href="/admin_car">
+      <img id="ad_img" src="./images/car_manage.png" alt="차량 관리" style="width:500px; height:300px;"/>
+      </a>
+    </div>
+    <div class="ad_img">
+      <a href="/admin_cust">
+      <img id="ad_img" src="./images/cust_manage.png" alt="예약 관리" style="width:500px; height:300px;"/>
+      </a>
+    </div>
+
+  
+</body>
+</html>
